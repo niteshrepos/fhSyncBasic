@@ -25,7 +25,8 @@ sync.init("myDataSet", {}, function() {
   sync.handleList(dataset_id, function(dataset_id, params, cb){
   	return cb(null, {
   		"3434343": {
-  			"prod": "o2"
+  			"prod": "o2",
+  			"prod2": "co2"
   		}
   	})
   });
