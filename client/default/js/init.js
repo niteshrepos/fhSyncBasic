@@ -35,9 +35,7 @@ $fh.ready(function() {
           console.log(key)
           document.write = key
         }
-        res.forEach(function(data){
-
-        })
+       
         console.log("res",res)
       }, function(code, msg){
         console.log("error")

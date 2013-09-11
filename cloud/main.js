@@ -1,4 +1,17 @@
 var util = require('util');
+var dbObject = {
+  		"apps":"Applications",
+		"cms":"Consultancy & Management Services",
+		"dc":"Data & Connectivity",
+		"vuc":"Voice & Unified Communications",
+		"infra":"Infrastructure"
+  	}
+
+  	exports.changeDbObj = function(params, callback) {
+  		dbObject.newVal =  "some new value";
+  		console.log("dbon server", dbObject)
+  		return callback(null dbObject)
+  	}
 /* main.js
  * All calls here are publicly exposed as REST API endpoints.
  * - all parameters must be passed in a single JSON paramater.
@@ -23,13 +36,7 @@ exports.myDataSet = function(params, callback) {
 
 sync.init("myDataSet", {}, function() {
   sync.handleList(dataset_id, function(dataset_id, params, cb){
-  	return cb(null, {
-  		"apps":"Applications",
-		"cms":"Consultancy & Management Services",
-		"dc":"Data & Connectivity",
-		"vuc":"Voice & Unified Communications",
-		"infra":"Infrastructure"
-  	})
+  	return cb(null, dbObject)
   });
 
   // sync.handleCreate(dataset_id, dataHandler.doCreate);
