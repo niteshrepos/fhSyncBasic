@@ -6,6 +6,10 @@ loading the local config and binding a click event to invoke the cloud action
 call which will return the remote config.
 */
 
+// -- show category from server
+// -- show category if offline
+// -- chnage value update local entry
+
 var datasetId = 'myDataSet';
 var datasetHash ;
 $fh.ready(function() {
@@ -51,8 +55,9 @@ document.getElementById('run_button').onclick = function() {
       datasetHash = notification.uid;
       sync.doList(datasetId, function(res){
         for( key in res){
+          $("#list").html("")
+          $("#list").append("<li>"+key+"</li>")
           console.log(key)
-          document.write = key
         }
        
         console.log("res",res)
