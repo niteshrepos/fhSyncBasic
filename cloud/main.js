@@ -10,7 +10,7 @@ var dbObject = {
   	exports.changeDbObj = function(params, callback) {
   		dbObject.newVal =  "some new value";
   		console.log("dbon server", dbObject)
-  		return callback(null dbObject)
+  		return callback(null, dbObject)
   	}
 /* main.js
  * All calls here are publicly exposed as REST API endpoints.
