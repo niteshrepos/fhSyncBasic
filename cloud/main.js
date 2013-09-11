@@ -8,7 +8,7 @@ var dbObject = {
   	}
 
   	exports.changeDbObj = function(params, callback) {
-  		dbObject.newVal =  "some new value";
+  		dbObject[Math.random()*100] =  "some new value";
   		console.log("dbon server", dbObject)
   		return callback(null, dbObject)
   	}

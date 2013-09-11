@@ -54,8 +54,8 @@ document.getElementById('run_button').onclick = function() {
       // so we should invoke the list operation.
       datasetHash = notification.uid;
       sync.doList(datasetId, function(res){
+        $("#list").html("")
         for( key in res){
-          $("#list").html("")
           $("#list").append("<li>"+key+"</li>")
           console.log(key)
         }
