@@ -33,6 +33,7 @@ $fh.ready(function() {
       sync.doList(datasetId, function(res){
         console.log("res",res)
       }, function(code, msg){
+        console.log("error")
         console.log("code", code)
         console.log("msg", msg)
       });
