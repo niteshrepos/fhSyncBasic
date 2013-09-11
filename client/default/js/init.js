@@ -9,6 +9,24 @@ call which will return the remote config.
 var datasetId = 'myDataSet';
 var datasetHash ;
 $fh.ready(function() {
+
+document.getElementById('run_button').onclick = function() {
+    // Invoke a cloud action call to get the remote configuration
+    // See: http://docs.feedhenry.com/wiki/Actions
+    $fh.act(
+      {
+        act:'changeDbObj'
+      },
+      function(res) {
+        console.log(res);
+      },
+      function(code,errorprops,params) {
+        console.log(code)
+      }
+    );
+  };
+
+
   sync = $fh.sync;
 
   sync.init( {"sync_frequency": 5,
