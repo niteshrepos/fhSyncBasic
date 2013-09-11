@@ -15,6 +15,7 @@ exports.getConfig = function(params, callback) {
 };
 
 var sync = $fh.sync;
+var dataset_id = "myDataSet";
 
 exports.myDataSet = function(params, callback) {
   $fh.sync.invoke('myDataSet', params, callback);
