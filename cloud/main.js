@@ -4,7 +4,8 @@ var dbObject = {
 		"cms":"Consultancy & Management Services",
 		"dc":"Data & Connectivity",
 		"vuc":"Voice & Unified Communications",
-		"infra":"Infrastructure"
+		"infra":"Infrastructure",
+		"try me": "trying"
   	}
 
   	exports.changeDbObj = function(params, callback) {
