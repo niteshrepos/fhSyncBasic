@@ -14,7 +14,7 @@ exports.getConfig = function(params, callback) {
   return callback(null, {config: cfg.config});
 };
 
-
+var sync = $fh.sync;
 
 exports.myDataSet = function(params, callback) {
   $fh.sync.invoke('myDataSet', params, callback);
@@ -29,17 +29,6 @@ sync.init("myDataSet", {}, function() {
   	})
   });
 
-  function(dataset_id, params, cb) {
-  console.log("doList : ", dataset_id, " :: ", params);
-  return cb(null, {
-    "guid": {
-      "category": {
-        "prod1" : "02",
-        "prod2" : "co2"
-      }
-    }
-
-  })
   // sync.handleCreate(dataset_id, dataHandler.doCreate);
   // sync.handleRead(dataset_id, dataHandler.doRead);
   // sync.handleUpdate(dataset_id, dataHandler.doUpdate);
