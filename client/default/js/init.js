@@ -47,12 +47,18 @@ document.getElementById('run_button').onclick = function() {
     console.log(notification)
 
   if ('sync_complete' == notification.code) {
+    alert("sync complete")
     // We are interested in sync_complete notifications as there may be changes to the dataset
     if (datasetHash != notification.uid) {
       // The dataset hash received in the uid parameter is different to the one 
       // we have stored. This means that there has been a change in the dataset 
       // so we should invoke the list operation.
-      datasetHash = notification.uid;
+       
+    }
+  } else if( 'local_update_applied' === notification.code ) {
+      alert("local update applied")
+        // Reflect local updates in table immediately
+         datasetHash = notification.uid;
       sync.doList(datasetId, function(res){
         $("#list").html("")
         for( key in res){
@@ -67,7 +73,6 @@ document.getElementById('run_button').onclick = function() {
         console.log("msg", msg)
       });
     }
-  }
 }
 
 });
