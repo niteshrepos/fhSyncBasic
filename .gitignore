@@ -1,0 +1,8 @@
+node_modules/*
+client_test/report/*
+.project
+.settings
+*.log
+.fhclocal/*
+.grunt/*
+cloud/node_modules/*
