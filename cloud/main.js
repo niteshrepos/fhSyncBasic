@@ -24,10 +24,11 @@ exports.myDataSet = function(params, callback) {
 sync.init("myDataSet", {}, function() {
   sync.handleList(dataset_id, function(dataset_id, params, cb){
   	return cb(null, {
-  		"3434343": {
-  			"prod": "o2",
-  			"prod2": "co2"
-  		}
+  		"apps":"Applications",
+		"cms":"Consultancy & Management Services",
+		"dc":"Data & Connectivity",
+		"vuc":"Voice & Unified Communications",
+		"infra":"Infrastructure"
   	})
   });
 
