@@ -9,15 +9,18 @@ var datasetId = 'myDataSet';
 $fh.ready(function() {
   sync = $fh.sync;
 
-  sync.init({});
+  sync.init( {"sync_frequency": 5,
+          "do_console_log" : true});
 
-  sync.notify(self.handleSyncNotifications);
+  sync.notify(handleSyncNotifications);
   
   sync.manage('myDataSet', {});
 
 
   function handleSyncNotifications(notification) {
+    console.log("s")
     console.log(notification)
+
   if ('sync_complete' == notification.code) {
     // We are interested in sync_complete notifications as there may be changes to the dataset
     if (localDatasetHash != notification.uid) {
