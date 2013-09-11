@@ -14,3 +14,37 @@ exports.getConfig = function(params, callback) {
   return callback(null, {config: cfg.config});
 };
 
+
+
+exports.myDataSet = function(params, callback) {
+  $fh.sync.invoke('myDataSet', params, callback);
+}
+
+sync.init("myDataSet", {}, function() {
+  sync.handleList(dataset_id, function(dataset_id, params, cb){
+  	return cb(null, {
+  		"3434343": {
+  			"prod": "o2"
+  		}
+  	})
+  });
+
+  function(dataset_id, params, cb) {
+  console.log("doList : ", dataset_id, " :: ", params);
+  return cb(null, {
+    "guid": {
+      "category": {
+        "prod1" : "02",
+        "prod2" : "co2"
+      }
+    }
+
+  })
+  // sync.handleCreate(dataset_id, dataHandler.doCreate);
+  // sync.handleRead(dataset_id, dataHandler.doRead);
+  // sync.handleUpdate(dataset_id, dataHandler.doUpdate);
+  // sync.handleDelete(dataset_id, dataHandler.doDelete);
+  // sync.handleCollision(dataset_id, dataHandler.doCollision);
+  // sync.listCollisions(dataset_id, dataHandler.listCollisions);
+  // sync.removeCollision(dataset_id, dataHandler.removeCollision);
+});

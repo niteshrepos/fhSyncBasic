@@ -5,24 +5,34 @@ Use the $fh.ready() (http://docs.feedhenry.com/wiki/Ready) function to trigger
 loading the local config and binding a click event to invoke the cloud action 
 call which will return the remote config.
 */
-
+var datasetId = 'myDataSet';
 $fh.ready(function() {
-  // The local config variable from config.js can be accessed directly
-  document.getElementById('localConfig').innerHTML = "<p>" + JSON.stringify(config) + "</p>";
+  sync = $fh.sync;
 
-  document.getElementById('run_button').onclick = function() {
-    // Invoke a cloud action call to get the remote configuration
-    // See: http://docs.feedhenry.com/wiki/Actions
-    $fh.act(
-      {
-        act:'getConfig'
-      },
-      function(res) {
-        document.getElementById('cloudConfig').innerHTML = "<p>" + JSON.stringify(res.config) + "</p>";
-      },
-      function(code,errorprops,params) {
-        alert('An error occured: ' + code + ' : ' + errorprops);
-      }
-    );
-  };
+  sync.init({});
+
+  sync.notify(self.handleSyncNotifications);
+  
+  sync.manage('myDataSet', {});
+
+
+  function handleSyncNotifications(notification) {
+    console.log(notification)
+  if ('sync_complete' == notification.code) {
+    // We are interested in sync_complete notifications as there may be changes to the dataset
+    if (localDatasetHash != notification.uid) {
+      // The dataset hash received in the uid parameter is different to the one 
+      // we have stored. This means that there has been a change in the dataset 
+      // so we should invoke the list operation.
+      datasetHash = notification.uid;
+      sync.doList(datasetId, function(res){
+        console.log("res",res)
+      }, function(code, msg){
+        console.log("code", code)
+        console.log("msg", msg)
+      });
+    }
+  }
+}
+
 });
