@@ -31,7 +31,13 @@ $fh.ready(function() {
       // so we should invoke the list operation.
       datasetHash = notification.uid;
       sync.doList(datasetId, function(res){
-        document.getElementById("list").innerHTML = res
+        for( key in res){
+          console.log(key)
+          document.write = key
+        }
+        res.forEach(function(data){
+
+        })
         console.log("res",res)
       }, function(code, msg){
         console.log("error")
