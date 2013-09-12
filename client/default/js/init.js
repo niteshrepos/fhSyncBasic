@@ -50,6 +50,7 @@ document.getElementById('run_button').onclick = function() {
   sync.manage('myDataSet', {});
 
   sync.doList(datasetId, function(res){
+      alert("local without notify")
         console.log("show before sync start")
         $("#list").html("")
         for( key in res){
@@ -58,6 +59,8 @@ document.getElementById('run_button').onclick = function() {
         }
        
         console.log("res",res)
+      alert("local without notify done")
+
       }, function(code, msg){
         console.log("error")
         console.log("code", code)
