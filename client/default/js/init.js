@@ -50,6 +50,7 @@ document.getElementById('run_button').onclick = function() {
   sync.manage('myDataSet', {});
 
   sync.doList(datasetId, function(res){
+        console.log("show before sync start")
         $("#list").html("")
         for( key in res){
           $("#list").append("<li>"+key+"</li>")
@@ -77,6 +78,23 @@ document.getElementById('run_button').onclick = function() {
        
     }
   } else if( 'local_update_applied' === notification.code ) {
+      console.log("local update applied")
+        // Reflect local updates in table immediately
+         datasetHash = notification.uid;
+      sync.doList(datasetId, function(res){
+        $("#list").html("")
+        for( key in res){
+          $("#list").append("<li>"+key+"</li>")
+          console.log(key)
+        }
+       
+        console.log("res",res)
+      }, function(code, msg){
+        console.log("error")
+        console.log("code", code)
+        console.log("msg", msg)
+      });
+    } else if( 'delta_received' === notification.code ) {
       console.log("local update applied")
         // Reflect local updates in table immediately
          datasetHash = notification.uid;
